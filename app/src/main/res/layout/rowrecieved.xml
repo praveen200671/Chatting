@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="right"
+    android:orientation="vertical"
+
+    android:paddingBottom="5dp"
+    android:paddingRight="10dp"
+    android:paddingTop="5dp" >
+
+
+    <RelativeLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@+id/tv_triangle"
+            android:background="@drawable/bg_msg_sent"
+            android:layout_marginLeft="50dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_Msg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="5dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="5dp"
+                android:textColor="#000000"
+                android:textSize="16sp"
+
+                />
+
+            <TextView
+                android:id="@+id/tv_msgtime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="3dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="2dp"
+                android:textColor="#000000"
+                android:textSize="9sp" />
+
+        </LinearLayout>
+
+      <!--  <TextView
+            android:id="@+id/tv_Msg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_msg_sent"
+            android:paddingBottom="5dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingTop="5dp"
+            android:textColor="#000000"
+            android:textSize="16dp"
+
+            android:layout_toLeftOf="@+id/tv_msgtime"
+            android:layout_marginLeft="50dp" />-->
+
+        <TextView
+            android:id="@+id/tv_triangle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/triangle_msg_sent"
+            android:paddingRight="10dp"
+            android:textColor="#000000"
+            android:textSize="16dp"
+            android:paddingLeft="10dp"
+            android:paddingTop="2dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="3dp" />
+
+    </RelativeLayout>
+
+</LinearLayout>

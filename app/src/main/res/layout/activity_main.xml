@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorrow"
+    tools:context="com.decimal.parveen.chatting.ChatActivity">
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="10dp"
+        android:scrollbars="vertical"
+        android:background="@color/colorwhite"
+        android:layout_above="@+id/ll_chatbox"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp" />
+
+    <LinearLayout
+        android:id="@+id/ll_chatbox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="10dp"
+        android:orientation="horizontal"
+        android:weightSum="10">
+
+        <EditText
+            android:id="@+id/et_msg"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="9"
+            android:background="@drawable/roundedshape"
+            android:maxLines="4"
+            android:paddingLeft="10dp"
+            android:minLines="2" />
+
+        <TextView
+            android:id="@+id/tv_send"
+            android:layout_width="15dp"
+            android:layout_height="35dp"
+            android:layout_marginLeft="2dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:background="@drawable/roundedcorner_textview"
+            android:text="@string/send"
+            android:textAllCaps="true"
+            android:textColor="@color/colorwhite"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+</RelativeLayout>

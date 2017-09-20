@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">Chatting</string>
+    <string name="send">Go</string>
+    <string name="title_activity_friends_list">FriendsListActivity</string>
+    <string name="Friend_Name">Enter Friend Name</string>
+    <string name="Friend_id">Enter MobileNo</string>
+    <string name="add_friend">Save</string>
+    <string name="enterfriend_id">Please enter Mobileno</string>
+    <string name="entercorrectfriend_id">Please enter correct Mobileno</string>
+    <string name="useralreadyexist">User Already Exists.</string>
+    <string name="enterfriend_name">Please enter friend name</string>
+    <string name="oopsmsg">Oops! something went wrong try again.</string>
+    <string name="savedsuccess">Friend added successfully.</string>
+
+    <string name="title_activity_splash">SplashActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">Splash Screen\n Touch here</string>
+    <string name="key_id">key_id</string>
+    <string name="key_friendname">key_friendname</string>
+    <string name="key_frienduniqueid">key_frienduniqueid</string>
+    <string name="allowchar">ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz.@1234567890</string>
+</resources>
