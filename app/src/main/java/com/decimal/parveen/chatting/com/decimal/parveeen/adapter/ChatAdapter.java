@@ -32,10 +32,10 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder> {
         int layoutRes = 0;
         switch (viewType) {
             case HEADER_VIEW:
-                layoutRes = R.layout.rowsent;
+                layoutRes = R.layout.rowrecieved;
                 break;
             case CONTENT_VIEW:
-                layoutRes = R.layout.rowrecieved;
+                layoutRes = R.layout.rowsent;
                 break;
         }
         View view = LayoutInflater.from(parent.getContext()).inflate(layoutRes, parent, false);

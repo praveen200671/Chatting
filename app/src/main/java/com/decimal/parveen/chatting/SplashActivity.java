@@ -68,6 +68,7 @@ public class SplashActivity extends AppCompatActivity {
     private void startnextactivity() {
         Intent intent = new Intent(this,FriendsListActivity.class);
         startActivity(intent);
+        finishAffinity();
 
     }
 
@@ -110,7 +111,7 @@ public class SplashActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
               //  toggle();
-                startnextactivity();
+//                startnextactivity();
             }
         });
 

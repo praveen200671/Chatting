@@ -19,4 +19,6 @@
     <string name="key_friendname">key_friendname</string>
     <string name="key_frienduniqueid">key_frienduniqueid</string>
     <string name="allowchar">ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz.@1234567890</string>
+    <string name="Addfriend">Add Friend</string>
+    <string name="friendlist">Friends List</string>
 </resources>

@@ -27,7 +27,6 @@ public class FriendsListActivity extends AppCompatActivity implements FriendList
     private MyChatDatabase db;
     private ArrayList<PojoFriend> arraylist;
     private FriendAdapter adapter;
-//    private ArrayList<PojoFriend> arraylist;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +34,7 @@ public class FriendsListActivity extends AppCompatActivity implements FriendList
         setContentView(R.layout.activity_friends_list);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        setTitle(getString(R.string.friendlist));
         getViews();
         initialize();
         getFriendsList();

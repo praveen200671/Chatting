@@ -30,6 +30,8 @@ public class ChatActivity extends AppCompatActivity implements ResultListener, V
     PojoChat recievedmsg;
     String[] arr =new String[]{"Auto generated.\n Hi! Friend ", "Auto generated.\nHow are you?","Auto generated.\nI miss you a lot.","Auto generated.\n Have you completed you graduation.","Auto generated.\n This is good news.","Auto generated.\n Nice to talk to you."};
     String id="",friendname="",frienduniqueid="";
+    private String lastmessageid="";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,7 +39,7 @@ public class ChatActivity extends AppCompatActivity implements ResultListener, V
         getViews();
         getValuefromBundle();
         initialization();
-        getDatafromDatabase();
+        getDatafromDatabase(lastmessageid);
         setClickListener();
         setTitle(friendname);
 
@@ -80,8 +82,9 @@ public class ChatActivity extends AppCompatActivity implements ResultListener, V
         tv_send.setOnClickListener(this);
     }
 
-    private void getDatafromDatabase() {
-        AsyncTaskFetchData asynctsk = new AsyncTaskFetchData(this,id, this);
+    private void getDatafromDatabase(String lastmessageid) {
+        this.lastmessageid =lastmessageid;
+        AsyncTaskFetchData asynctsk = new AsyncTaskFetchData(this,id, lastmessageid, this);
         asynctsk.execute();
 
     }
@@ -95,8 +98,20 @@ public class ChatActivity extends AppCompatActivity implements ResultListener, V
 
     @Override
     public void onResult(ArrayList<PojoChat> arrayList) {
-        this.arraylist = arrayList;
-        setAdapter();
+        try {
+            if(chatadapter!=null)
+            {
+                for(PojoChat pojo:arrayList)
+                this.arraylist.add(pojo);
+            }
+            else
+            {
+                this.arraylist =arrayList;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+            setAdapter();
     }
 
     private void setAdapter() {
@@ -104,8 +119,10 @@ public class ChatActivity extends AppCompatActivity implements ResultListener, V
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
+//        recyclerView.setStackFromEnd(true);
         recyclerView.setAdapter(chatadapter);
-        recyclerView.smoothScrollToPosition(chatadapter.getItemCount());
+//        recyclerView.smoothScrollToPosition(chatadapter.getItemCount());
+        recyclerView.scrollToPosition(chatadapter.getItemCount()-1);
         chatadapter.notifyDataSetChanged();
     }
 
@@ -126,12 +143,18 @@ public class ChatActivity extends AppCompatActivity implements ResultListener, V
             msg.setMsg(et_msg.getText().toString());
             msg.setMsgtime((UtilClass.getCurrentTime().toString()));
             msg.setFriendid(id);
-//            arraylist.add(msg);
 
             // save sent message.......
             db.addMessage(msg);
             setDataforRecievedMsg();
-            getDatafromDatabase();
+            if(chatadapter.getItemCount()>0)
+            {
+                getDatafromDatabase(arraylist.get(chatadapter.getItemCount()-1).getId());
+            }else
+            {
+                getDatafromDatabase("");
+            }
+
 
 //            recyclerView.smoothScrollToPosition(arraylist.size()-2);
 

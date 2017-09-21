@@ -15,15 +15,17 @@ import java.util.ArrayList;
  */
 
 public class AsyncTaskFetchData extends AsyncTask<String,Void,ArrayList<PojoChat>> {
+    private final String lastmessageid;
     ArrayList<PojoChat> arrayList = new ArrayList<>();
     Context context;
     ResultListener resultlistener;
     String friendid="";
     ProgressDialog progressBar ;
-    public AsyncTaskFetchData(Context context, String frienduniqueid, ResultListener resultlistener)
+    public AsyncTaskFetchData(Context context, String frienduniqueid,String lastmessageid, ResultListener resultlistener)
     {
         this.context = context;
         friendid= frienduniqueid;
+        this.lastmessageid=lastmessageid;
         this.resultlistener =resultlistener;
         progressBar = new ProgressDialog(context);
         progressBar.setCancelable(true);//you can cancel it by pressing back button
@@ -40,7 +42,7 @@ public class AsyncTaskFetchData extends AsyncTask<String,Void,ArrayList<PojoChat
     }
     @Override
     protected ArrayList<PojoChat> doInBackground(String... data) {
-        return arrayList = new MyChatDatabase(context).getMSG(friendid);
+        return arrayList = new MyChatDatabase(context).getMSG(friendid,lastmessageid);
     }
 
     @Override

@@ -120,18 +120,18 @@ public class MyChatDatabase extends SQLiteOpenHelper {
     }
 
     // get all message currently we have no separate contacts. We need to pass user id in this method.... to get specific user msg.
-    public ArrayList<PojoChat> getMSG(String friendid) {
+    public ArrayList<PojoChat> getMSG( String friendid,String lastmessageid) {
         ArrayList<PojoChat> chatmsglist = new ArrayList<>();
         PojoChat message = null;
         Cursor cursor;
         try {
             SQLiteDatabase db = this.getReadableDatabase();
-            if (friendid.trim().length() != 0)
+            if (lastmessageid.trim().length() != 0)
                 cursor = db.query(TABLE_MESSAGE, new String[]{KEY_ID, KEY_FRIENDID,
-                        KEY_MESSAGE, KEY_ISSENTMESSAGE, KEY_MSGTIME}, KEY_FRIENDID + "=?", new String[]{friendid}, null, null, KEY_ID);
+                        KEY_MESSAGE, KEY_ISSENTMESSAGE, KEY_MSGTIME}, KEY_FRIENDID + "=? and "+KEY_ID+" > ? ", new String[]{friendid,lastmessageid}, null, null, KEY_ID);
             else
                 cursor = db.query(TABLE_MESSAGE, new String[]{KEY_ID, KEY_FRIENDID,
-                        KEY_MESSAGE, KEY_ISSENTMESSAGE, KEY_MSGTIME}, null, null, null, null, KEY_ID);
+                        KEY_MESSAGE, KEY_ISSENTMESSAGE, KEY_MSGTIME}, KEY_FRIENDID + "=?", new String[]{friendid}, null, null, KEY_ID);
             if (cursor != null)
                 cursor.moveToFirst();
             do {
